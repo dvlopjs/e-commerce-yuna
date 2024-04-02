@@ -1,6 +1,15 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import Header from "./components/Header";
+import { Chunk } from "./chunk";
 
 export default function Home() {
-  return <div>Home page</div>;
+  return (
+    <>
+      <Header />
+      <div style={{ justifyContent: "center", textAlign: "center" }}>
+        <h1>Nuestros productos...</h1>
+        <Chunk />
+      </div>
+    </>
+  );
 }
