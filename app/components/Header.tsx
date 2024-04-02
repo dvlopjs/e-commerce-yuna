@@ -5,8 +5,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import LogoNegocio from "../assets/images/yuna_logo.jpg";
 import Image from "next/image";
-import "./header.css";
-import { Box } from "@mui/material";
+import "./components.css";
+import { Box, Typography } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface Props {
   /**
@@ -40,13 +41,21 @@ export default function ElevateAppBar(props: Props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar color="inherit" elevation={2}>
-          <Toolbar className="toolbar">
-            <Box>
+        <AppBar
+          style={{
+            backgroundColor: "#ffb4a2",
+            boxShadow: "0px 8px 8px rgba(0, 0, 0, 0.1)",
+          }}
+          elevation={2}
+        >
+          <Toolbar>
+            <Box pr={1} pt={1}>
               <Image className="logo" src={LogoNegocio} alt="logo" />
-              {/* <h1 style={{ textAlign: "center" }}>Yuna pastelería</h1>
-               */}
             </Box>
+            <Typography variant="h5">Yuna pastelería</Typography>
+            <Box flexGrow={1} />
+            <h4>Mi pedido</h4>
+            <ShoppingCartIcon style={{ color: "#ffff" }} />
           </Toolbar>
         </AppBar>
       </ElevationScroll>
