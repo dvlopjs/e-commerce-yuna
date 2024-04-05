@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import { Container } from "@mui/material";
 import Products from "./components/Products";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <Products />
         </div>
       </Container>
+      <ToastContainer position="top-right" autoClose={560} />
     </>
   );
 }

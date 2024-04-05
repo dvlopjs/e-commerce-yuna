@@ -1,8 +1,8 @@
 "use client";
-import type { Metadata } from "next";
-import { Dancing_Script, Great_Vibes } from "next/font/google";
+import { Dancing_Script } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./globals.css";
 import { StoreProvider } from "./redux/StoreProvider";

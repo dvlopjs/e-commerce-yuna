@@ -1,13 +1,13 @@
 "use client";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 import { Button, Grid, Tooltip, Typography } from "@mui/material";
-import "./components.css";
+import "../components.css";
 import Image from "next/image";
-import { truncateTitle } from "../utils/truncateTitle";
+import { truncateTitle } from "../../utils/truncateTitle";
+import AddToCartButton from "./AddToCartButton";
 export default function Products() {
   const products = useSelector((state: RootState) => state.pasteleria.products);
-  console.log(products);
   return (
     <Grid container spacing={4}>
       {products.map((p, i) => (
@@ -20,9 +20,7 @@ export default function Products() {
               </Typography>
             </Tooltip>
             <p>Precio: $500</p>
-            <Button style={{ backgroundColor: "#ffb4a2" }} variant="contained">
-              Agregar al carrito
-            </Button>
+            <AddToCartButton />
           </article>
         </Grid>
       ))}
