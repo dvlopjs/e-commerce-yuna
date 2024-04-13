@@ -23,7 +23,7 @@ const AddToCartButton: React.FC<Props> = ({ product }: Props) => {
   const handleClick = () => {
     setClicked(true);
     setTimeout(() => setClicked(false), 500);
-    dispatch(addProductToCart(product.id));
+    dispatch(addProductToCart(product));
     setOpenDrawer(true);
   };
 

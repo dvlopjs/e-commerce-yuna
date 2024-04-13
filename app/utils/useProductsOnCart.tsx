@@ -3,7 +3,11 @@ import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 
 export const useProductsOnCart: Function = () => {
-  const products = useSelector((state: RootState) => state.pasteleria.products);
+  const cart = useSelector((state: RootState) => state.pasteleria.cart);
 
-  return products.filter((p) => p.addedToCart);
+  if (cart.length) {
+    return cart;
+  } else {
+    return [];
+  }
 };
