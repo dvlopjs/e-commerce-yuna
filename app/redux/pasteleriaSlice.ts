@@ -34,7 +34,6 @@ const pasteleriaSlice = createSlice({
       );
       const cartCopy = [...state.cart];
 
-      console.log(indexProduct);
       // Chequear si el articulo se encuentra en el carrito
       if (indexProduct !== -1) {
         cartCopy[indexProduct].quantity += 1;

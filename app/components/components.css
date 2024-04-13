@@ -17,3 +17,12 @@
 .img-product:hover {
   transform: scale(1.1);
 }
+
+.text-logo {
+  margin-left: 10px;
+  transition: margin-left 1s ease; /* Transición suave del movimiento */
+}
+
+.text-logo:hover {
+  margin-left: 20px; /* Movimiento de izquierda a derecha al pasar el mouse sobre el texto */
+}

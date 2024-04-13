@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "@mui/material";
 import Products from "./components/Products";
 import { ToastContainer } from "react-toastify";
+import CustomCarousel from "./components/Carrousel";
 
 export default function Home() {
   return (
