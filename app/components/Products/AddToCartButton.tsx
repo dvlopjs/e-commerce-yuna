@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { useSpring, animated } from "@react-spring/web";
 import "react-toastify/dist/ReactToastify.css";
-import successNotification from "../../utils/notifications/successNotification";
+import { Product, addProductToCart } from "@/app/redux/pasteleriaSlice";
+import { useDispatch } from "react-redux";
+import ReusableDrawer from "../DrawerPedido";
 
-const AddToCartButton: React.FC = ({}) => {
+interface Props {
+  product: Product;
+}
+
+const AddToCartButton: React.FC<Props> = ({ product }: Props) => {
   const [clicked, setClicked] = useState<boolean>(false);
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const springProps = useSpring({
     transform: clicked ? "scale(1.2)" : "scale(1)",
@@ -15,9 +23,8 @@ const AddToCartButton: React.FC = ({}) => {
   const handleClick = () => {
     setClicked(true);
     setTimeout(() => setClicked(false), 500);
-    successNotification({
-      message: <Typography>¡Producto agregado al carrito.!</Typography>,
-    });
+    dispatch(addProductToCart(product.id));
+    setOpenDrawer(true);
   };
 
   return (
@@ -30,6 +37,7 @@ const AddToCartButton: React.FC = ({}) => {
       >
         Agregar al carrito
       </Button>
+      <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)} />
     </animated.div>
   );
 };

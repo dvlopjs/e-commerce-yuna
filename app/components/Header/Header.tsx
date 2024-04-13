@@ -3,11 +3,13 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import LogoNegocio from "../assets/images/yuna_logo.jpg";
-import Image from "next/image";
-import "./components.css";
-import { Box, Typography } from "@mui/material";
+import "../components.css";
+import { Badge, Box } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ButtonCreateAccount from "../Buttons/ButtonCreateAccount";
+import LogoApp from "./LogoApp";
+import AnimatedBadge from "./AnimatedBadge";
+import ReusableDrawer from "../DrawerPedido";
 
 interface Props {
   /**
@@ -37,6 +39,8 @@ function ElevationScroll(props: Props) {
 }
 
 export default function ElevateAppBar(props: Props) {
+  const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -49,17 +53,33 @@ export default function ElevateAppBar(props: Props) {
           elevation={2}
         >
           <Toolbar>
-            <Box pr={1} pt={1}>
-              <Image className="logo" src={LogoNegocio} alt="logo" />
-            </Box>
-            <Typography variant="h5">Yuna pastelería</Typography>
+            <LogoApp />
             <Box flexGrow={1} />
-            <h4>Mi pedido</h4>
-            <ShoppingCartIcon style={{ color: "#ffff" }} />
+            <Box
+              display={"flex"}
+              alignContent={"center"}
+              alignItems={"center"}
+              gap={4}
+            >
+              <ButtonCreateAccount
+                text={"Crear cuenta"}
+                urlDirection="/auth/register"
+              />
+              {/* <Badge
+                badgeContent={3}
+                color="error"
+                style={{ cursor: "pointer" }}
+              >
+                <ShoppingCartIcon style={{ color: "#ffff" }} />
+
+              </Badge> */}
+              <AnimatedBadge setOpenDrawer={setOpenDrawer} />
+            </Box>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
       <Toolbar />
+      <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)} />
     </React.Fragment>
   );
 }

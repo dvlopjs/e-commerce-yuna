@@ -2,8 +2,7 @@
 import { Dancing_Script } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { ToastContainer, toast } from "react-toastify";
-
+import Header from "./components/Header/Header";
 import "./globals.css";
 import { StoreProvider } from "./redux/StoreProvider";
 
@@ -34,6 +33,8 @@ export default function RootLayout({
               style={{ backgroundColor: "#FCF7F8" }}
               className={dancingScriptCursiva.className}
             >
+              <Header />
+
               {children}
             </body>
           </AppRouterCacheProvider>

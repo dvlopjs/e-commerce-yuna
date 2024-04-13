@@ -20,7 +20,7 @@ export default function Products() {
               </Typography>
             </Tooltip>
             <p>Precio: $500</p>
-            <AddToCartButton />
+            <AddToCartButton product={p} />
           </article>
         </Grid>
       ))}
