@@ -80,6 +80,14 @@ const pasteleriaSlice = createSlice({
 
       state.cart = updatedProducts;
     },
+
+    deleteProductFromCart(state, action: PayloadAction<number>) {
+      const productId = action.payload;
+
+      const indexProduct = state.cart.findIndex((x) => x.id === productId);
+
+      state.cart.splice(indexProduct, 1);
+    },
   },
 });
 
@@ -87,5 +95,6 @@ export const {
   addProductToCart,
   decreaseQuantityProductOnCart,
   increaseQuantityProductOnCart,
+  deleteProductFromCart,
 } = pasteleriaSlice.actions;
 export default pasteleriaSlice.reducer;

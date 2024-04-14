@@ -12,33 +12,45 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Image from "next/image";
-import {
-  Product,
-  decreaseQuantityProductOnCart,
-  increaseQuantityProductOnCart,
-} from "@/app/redux/pasteleriaSlice";
+import { Product, deleteProductFromCart } from "@/app/redux/pasteleriaSlice";
 import "./drawer.css";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
+
 import React from "react";
 import { useDispatch } from "react-redux";
+
+import { PrimaryContent } from "./PrimaryContent";
+import { SecondaryContent } from "./SecondaryContent";
+import { FooterDrawer } from "./FooterDrawer";
 const DrawerContent: React.FC = () => {
-  const products = useProductsOnCart();
+  const { cart: products, subtotal } = useProductsOnCart();
   const dispatch = useDispatch();
 
   return (
     <>
       <Container>
-        <List>
+        <List style={{ maxHeight: "750px", overflow: "auto" }}>
           <Box pt={2} pb={2}>
             <Typography variant="h4">Carrito de compras</Typography>
           </Box>
-          <Divider />
+          <Box pb={1}>
+            <Divider />
+          </Box>
+          <Box display={"flex"} justifyContent={"space-between"} pl={2} pr={2}>
+            <Typography>PRODUCTO</Typography>
+            <Typography>SUBTOTAL</Typography>
+          </Box>
+          <Box pt={1}>
+            <Divider />
+          </Box>
           {products.map((p: Product) => (
             <React.Fragment key={p.id}>
               <ListItem
                 secondaryAction={
-                  <IconButton edge="end" aria-label="delete">
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => dispatch(deleteProductFromCart(p.id))}
+                  >
                     <DeleteIcon style={{ color: "#ffb4a2" }} />
                   </IconButton>
                 }
@@ -48,32 +60,16 @@ const DrawerContent: React.FC = () => {
                 </ListItemAvatar>
 
                 <ListItemText
-                  primary={<Typography variant="h6">{p.name}</Typography>}
-                  secondary={
-                    <>
-                      <IconButton
-                        onClick={() =>
-                          dispatch(decreaseQuantityProductOnCart(p.id))
-                        }
-                      >
-                        <RemoveIcon />
-                      </IconButton>
-                      {p.quantity}
-                      <IconButton
-                        onClick={() =>
-                          dispatch(increaseQuantityProductOnCart(p.id))
-                        }
-                      >
-                        <AddIcon />
-                      </IconButton>
-                    </>
-                  }
+                  primary={<PrimaryContent p={p} />}
+                  secondary={<SecondaryContent p={p} />}
                 />
               </ListItem>
+
               <Divider />
             </React.Fragment>
           ))}
         </List>
+        <FooterDrawer />
       </Container>
     </>
   );

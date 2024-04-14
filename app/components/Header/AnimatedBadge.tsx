@@ -12,7 +12,7 @@ const AnimatedShoppingCartIcon = animated(ShoppingCartIcon);
 
 const AnimatedBadge: React.FC<Props> = ({ setOpenDrawer }: Props) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
-  const products = useProductsOnCart();
+  const { cart: products } = useProductsOnCart();
   const springProps = useSpring({
     transform: hovered ? "scale(1.1)" : "scale(1)",
     config: { tension: 300, friction: 10 },
@@ -23,7 +23,7 @@ const AnimatedBadge: React.FC<Props> = ({ setOpenDrawer }: Props) => {
       style={springProps}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => setOpenDrawer(true)}
+      onClick={() => (!products.length ? () => {} : setOpenDrawer(true))}
     >
       <Badge
         badgeContent={products.length}
