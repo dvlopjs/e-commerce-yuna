@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Box,
@@ -40,7 +41,7 @@ const ReusableDrawer: React.FC<Props> = ({ open, onClose }) => {
       open={open}
       onClose={onClose}
       PaperProps={{
-        sx: { width: drawerWidth },
+        sx: { width: drawerWidth, backgroundColor: "rgb(252, 247, 248)" },
       }}
     >
       <Box display={"flex"} justifyContent={"flex-end"} pr={2} pt={2}>

@@ -15,7 +15,7 @@ interface Props {
 export const SecondaryContent: React.FC<Props> = ({ p }) => {
   const dispatch = useDispatch();
   return (
-    <Box>
+    <>
       <IconButton onClick={() => dispatch(decreaseQuantityProductOnCart(p.id))}>
         <RemoveIcon />
       </IconButton>
@@ -23,6 +23,6 @@ export const SecondaryContent: React.FC<Props> = ({ p }) => {
       <IconButton onClick={() => dispatch(increaseQuantityProductOnCart(p.id))}>
         <AddIcon />
       </IconButton>
-    </Box>
+    </>
   );
 };

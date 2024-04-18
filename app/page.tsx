@@ -1,24 +1,23 @@
-import React from "react";
-import { Container } from "@mui/material";
+import React, { useEffect } from "react";
+import { Box, Container, Typography } from "@mui/material";
 import Products from "./components/Products";
 import { ToastContainer } from "react-toastify";
-import CustomCarousel from "./components/Carrousel";
 
 export default function Home() {
   return (
     <>
-      <Container>
-        <div
-          style={{
-            justifyContent: "center",
-            textAlign: "center",
-            paddingTop: 10,
-            paddingBottom: 10,
-          }}
-        >
-          <h1>Nuestros productos...</h1>
-          <Products />
-        </div>
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >
+        <Box pb={2} pt={5}>
+          <Typography variant="h3">Nuestros productos...</Typography>
+        </Box>
+        <Products />
       </Container>
       <ToastContainer position="top-right" autoClose={560} />
     </>

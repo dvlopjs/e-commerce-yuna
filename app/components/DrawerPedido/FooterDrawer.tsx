@@ -6,7 +6,6 @@ import { priceParser } from "@/app/utils/priceParser";
 import { useProductsOnCart } from "@/app/utils/useProductsOnCart";
 
 export const FooterDrawer: React.FC = () => {
-  const dispatch = useDispatch();
   const { subtotal } = useProductsOnCart();
 
   return (

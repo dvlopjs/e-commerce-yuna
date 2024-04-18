@@ -22,7 +22,7 @@ export default function LogoApp(): JSX.Element {
         >
           <Image className="logo" src={LogoNegocio} alt="logo" />
 
-          <Typography variant="h5">Yuna pastelería</Typography>
+          <Typography variant="h4">Yuna pastelería</Typography>
         </Box>
       </Link>
     </>

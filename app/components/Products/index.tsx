@@ -9,13 +9,13 @@ import AddToCartButton from "./AddToCartButton";
 export default function Products() {
   const products = useSelector((state: RootState) => state.pasteleria.products);
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={6} sx={{ paddingTop: 5, paddingBottom: 10 }}>
       {products.map((p, i) => (
         <Grid item key={i} xs={12} sm={6} md={3}>
           <article>
             <Image className="img-product" src={p.image} alt="logoImg" />
-            <Tooltip title={p.name}>
-              <Typography variant="h6">
+            <Tooltip title={<Typography>{p.name}</Typography>}>
+              <Typography variant="h5" sx={{ paddingTop: 1 }}>
                 {truncateTitle({ text: p.name })}
               </Typography>
             </Tooltip>

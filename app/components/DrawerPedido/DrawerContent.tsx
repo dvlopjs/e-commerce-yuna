@@ -22,7 +22,7 @@ import { PrimaryContent } from "./PrimaryContent";
 import { SecondaryContent } from "./SecondaryContent";
 import { FooterDrawer } from "./FooterDrawer";
 const DrawerContent: React.FC = () => {
-  const { cart: products, subtotal } = useProductsOnCart();
+  const { cart: products } = useProductsOnCart();
   const dispatch = useDispatch();
 
   return (

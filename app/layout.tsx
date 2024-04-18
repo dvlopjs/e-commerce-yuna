@@ -1,45 +1,49 @@
-"use client";
-import { Dancing_Script } from "next/font/google";
+import { Cookie, Dancing_Script } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "./components/Header/Header";
 import "./globals.css";
 import { StoreProvider } from "./redux/StoreProvider";
+import Footer from "./components/Footer";
+import { Box } from "@mui/material";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import ThemeRegistry from "./theme/ThemeRegistry";
 
-const dancingScriptCursiva = Dancing_Script({
-  weight: "700",
-  subsets: ["latin"],
-  variable: "--font-dancing-script-cursiva",
-});
-
-const theme = createTheme({
-  typography: {
-    fontFamily: dancingScriptCursiva.style.fontFamily,
-  },
-});
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // opcion1 "#FCF7F8"
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
-    <StoreProvider>
-      <ThemeProvider theme={theme}>
-        <html lang="en">
-          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+    <html lang="en">
+      <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+        <StoreProvider>
+          <ThemeRegistry>
             <body
-              style={{ backgroundColor: "#FCF7F8" }}
-              className={dancingScriptCursiva.className}
+              style={{
+                backgroundColor: "#FCF7F8",
+
+                justifyContent: "center",
+                paddingTop: 10,
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+              // className={dancingScriptCursiva.className}
             >
               <Header />
 
               {children}
+
+              <Footer />
             </body>
-          </AppRouterCacheProvider>
-        </html>
-      </ThemeProvider>
-    </StoreProvider>
+          </ThemeRegistry>
+        </StoreProvider>
+      </AppRouterCacheProvider>
+    </html>
   );
 }
