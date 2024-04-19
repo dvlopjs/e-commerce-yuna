@@ -14,6 +14,8 @@ import NavButtons from "./NavButtons";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { useServerSession } from "@/app/utils/useServerSession";
+import { useSession } from "next-auth/react";
+import { ButtonInSession } from "./ButtonsInSession";
 
 interface Props {
   /**
@@ -42,6 +44,9 @@ function ElevationScroll(props: Props) {
 
 export default function ElevateAppBar(props: Props) {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
+  const { data: session } = useSession();
+
+  console.log(session?.user, "SESSION");
 
   return (
     <React.Fragment>
@@ -66,12 +71,18 @@ export default function ElevateAppBar(props: Props) {
             </Box>
             <Box flexGrow={1} />
 
-            <ButtonCreateAccount
-              text="Crear cuenta"
-              urlDirection="/auth/register"
-            />
+            <Box display={"flex"} alignContent={"center"} gap={2}>
+              {!session ? (
+                <ButtonCreateAccount
+                  text="Crear cuenta"
+                  urlDirection="/auth/register"
+                />
+              ) : (
+                <ButtonInSession />
+              )}
 
-            <AnimatedBadge setOpenDrawer={setOpenDrawer} />
+              <AnimatedBadge setOpenDrawer={setOpenDrawer} />
+            </Box>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

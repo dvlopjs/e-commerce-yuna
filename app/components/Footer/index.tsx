@@ -5,16 +5,13 @@ import { Height } from "@mui/icons-material";
 const Footer: React.FC = () => {
   return (
     <Box
-      style={{
-        backgroundColor: "#fcece6", // Color de fondo marrón claro
-        height: 100, // Espacio interno
-        // textAlign: "center", // Alineación del texto al centro
-        color: "#333", // Color del texto
+      sx={{
+        backgroundColor: "#fcece6",
+        height: 100,
         marginTop: "auto",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
-        width: "100%", // Ancho completo
+        paddingTop: 5,
       }}
     >
       <Typography variant="body1">Made by Cris 🖤</Typography>

@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Container,
   Divider,
@@ -37,7 +36,13 @@ export default function Contact() {
 
         <Grid container>
           <Grid item xs={12} md={6}>
-            <TextField multiline minRows={3} label={"Comentario"} fullWidth />
+            <TextField
+              multiline
+              minRows={3}
+              label={"Comentario"}
+              name="comentario"
+              fullWidth
+            />
           </Grid>
           <Grid item md={6} />
           <Grid item xs={12} md={6} sx={{ pt: 3 }}>

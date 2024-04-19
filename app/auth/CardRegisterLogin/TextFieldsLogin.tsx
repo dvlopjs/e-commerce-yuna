@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Grid,
   IconButton,
   InputAdornment,
   TextField,
@@ -50,65 +51,87 @@ const TextFieldsLogin: React.FC = ({}) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
-          EMAIL
-        </Typography>
-        <TextField
-          label="Correo electrónico"
-          fullWidth
-          autoComplete="username"
-          error={errors.email && touchedFields ? true : false}
-          helperText={
-            <span style={{ fontSize: 20 }}>{errors.email?.message}</span>
-          }
-          {...register("email", {
-            required: { value: true, message: "Campo requerido" },
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Ingresa un correo electrónico válido",
-            },
-          })}
-        />
+        <Grid container>
+          <Grid container justifyContent={"center"}>
+            <Grid item xs={12} sm={5} md={4}>
+              <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
+                EMAIL
+              </Typography>
+              <TextField
+                label="Correo electrónico"
+                fullWidth
+                autoComplete="username"
+                error={errors.email && touchedFields ? true : false}
+                helperText={
+                  <span style={{ fontSize: 20 }}>{errors.email?.message}</span>
+                }
+                {...register("email", {
+                  required: { value: true, message: "Campo requerido" },
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Ingresa un correo electrónico válido",
+                  },
+                })}
+              />
+            </Grid>
+          </Grid>
 
-        <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 4 }}>
-          CONTRASEÑA
-        </Typography>
-        <TextField
-          autoComplete="current-password"
-          label="Contraseña"
-          fullWidth
-          error={errors.password && touchedFields ? true : false}
-          helperText={
-            <span style={{ fontSize: 20 }}>{errors.password?.message}</span>
-          }
-          type={showPassword ? "text" : "password"}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={togglePasswordVisibility}
-                  edge="end"
-                  aria-label="toggle password visibility"
-                >
-                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          {...register("password", {
-            required: true,
-          })}
-        />
-        <Box pt={2}>
-          <Button
-            style={{ backgroundColor: "#ffb4a2" }}
-            variant="contained"
-            fullWidth
-            type="submit"
-          >
-            Ingresar
-          </Button>
-        </Box>
+          <Grid container justifyContent={"center"}>
+            <Grid item xs={12} sm={5} md={4}>
+              <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 4 }}>
+                CONTRASEÑA
+              </Typography>
+              <TextField
+                autoComplete="current-password"
+                label="Contraseña"
+                fullWidth
+                error={errors.password && touchedFields ? true : false}
+                helperText={
+                  <span style={{ fontSize: 20 }}>
+                    {errors.password?.message}
+                  </span>
+                }
+                type={showPassword ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={togglePasswordVisibility}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                {...register("password", {
+                  required: true,
+                })}
+              />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid container justifyContent={"center"}>
+              <Grid item xs={12} md={4} sm={5}>
+                <Box pt={2}>
+                  <Button
+                    style={{ backgroundColor: "#ffb4a2" }}
+                    variant="contained"
+                    fullWidth
+                    type="submit"
+                  >
+                    Ingresar
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </form>
     </>
   );

@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Grid,
   IconButton,
   InputAdornment,
   TextField,
@@ -41,84 +42,101 @@ const TextFieldsRegister: React.FC = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography align="left" fontWeight="700" sx={{ pb: 2 }}>
-          NOMBRE
-        </Typography>
-        <TextField
-          label="Nombre"
-          fullWidth
-          error={errors.name && touchedFields ? true : false}
-          helperText={
-            <span style={{ fontSize: 20 }}>{errors.name?.message}</span>
-          }
-          {...register("name", {
-            required: { value: true, message: "Campo requerido" },
-          })}
-        />
-
-        <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
-          EMAIL
-        </Typography>
-        <TextField
-          label="Correo electrónico"
-          error={errors.email && touchedFields ? true : false}
-          helperText={
-            <span style={{ fontSize: 20 }}>{errors.email?.message}</span>
-          }
-          fullWidth
-          {...register("email", {
-            required: { value: true, message: "Campo requerido" },
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Ingresa un correo electrónico válido",
-            },
-          })}
-        />
-
-        <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
-          CONTRASEÑA
-        </Typography>
-        <TextField
-          label="Contraseña"
-          {...register("password", {
-            required: { value: true, message: "Campo requerido" },
-          })}
-          fullWidth
-          error={errors.password && touchedFields ? true : false}
-          helperText={
-            <span style={{ fontSize: 20 }}>{errors.password?.message}</span>
-          }
-          autoComplete="current-password"
-          type={showPassword ? "text" : "password"}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={togglePasswordVisibility}
-                  edge="end"
-                  aria-label="toggle password visibility"
-                >
-                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-
-        <Box pt={2}>
-          <Button
-            style={{ backgroundColor: "#ffb4a2" }}
-            variant="contained"
-            fullWidth
-            type="submit"
-          >
-            Registrarse
-          </Button>
-        </Box>
-      </form>
-    </>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid container direction={"column"}>
+        <Grid container justifyContent={"center"}>
+          <Grid item xs={12} sm={5} md={4}>
+            <Typography align="left" fontWeight="700" sx={{ pb: 2 }}>
+              NOMBRE
+            </Typography>
+            <TextField
+              label="Nombre"
+              fullWidth
+              error={errors.name && touchedFields ? true : false}
+              helperText={
+                <span style={{ fontSize: 20 }}>{errors.name?.message}</span>
+              }
+              {...register("name", {
+                required: { value: true, message: "Campo requerido" },
+              })}
+            />
+          </Grid>
+        </Grid>
+        <Grid container justifyContent={"center"}>
+          <Grid item xs={12} sm={5} md={4}>
+            <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
+              EMAIL
+            </Typography>
+            <TextField
+              label="Correo electrónico"
+              error={errors.email && touchedFields ? true : false}
+              helperText={
+                <span style={{ fontSize: 20 }}>{errors.email?.message}</span>
+              }
+              fullWidth
+              {...register("email", {
+                required: { value: true, message: "Campo requerido" },
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Ingresa un correo electrónico válido",
+                },
+              })}
+            />
+          </Grid>
+        </Grid>
+        <Grid container justifyContent={"center"}>
+          <Grid item xs={12} sm={5} md={4}>
+            <Typography align="left" fontWeight="700" sx={{ pb: 2, pt: 2 }}>
+              CONTRASEÑA
+            </Typography>
+            <TextField
+              label="Contraseña"
+              {...register("password", {
+                required: { value: true, message: "Campo requerido" },
+              })}
+              fullWidth
+              error={errors.password && touchedFields ? true : false}
+              helperText={
+                <span style={{ fontSize: 20 }}>{errors.password?.message}</span>
+              }
+              autoComplete="current-password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={togglePasswordVisibility}
+                      edge="end"
+                      aria-label="toggle password visibility"
+                    >
+                      {showPassword ? (
+                        <VisibilityIcon />
+                      ) : (
+                        <VisibilityOffIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+        </Grid>
+        <Grid container justifyContent={"center"}>
+          <Grid item xs={12} sm={5} md={4}>
+            <Box pt={2}>
+              <Button
+                style={{ backgroundColor: "#ffb4a2" }}
+                variant="contained"
+                fullWidth
+                type="submit"
+              >
+                Registrarse
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Grid>
+    </form>
   );
 };
 export default TextFieldsRegister;
