@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSpring, animated } from "@react-spring/web";
 import { useProductsOnCart } from "@/app/utils/useProductsOnCart";
 
 interface Props {
-  setOpenDrawer: Function;
+  setOpenDrawer: Dispatch<SetStateAction<boolean>>;
 }
 
 const AnimatedShoppingCartIcon = animated(ShoppingCartIcon);
@@ -26,7 +26,9 @@ const AnimatedBadge: React.FC<Props> = ({ setOpenDrawer }: Props) => {
       onClick={() => (!products.length ? () => {} : setOpenDrawer(true))}
     >
       <Badge
-        badgeContent={products.length}
+        badgeContent={
+          <span style={{ fontFamily: "initial" }}>{products.length}</span>
+        }
         color="error"
         style={{ cursor: "pointer" }}
       >

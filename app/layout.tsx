@@ -3,7 +3,6 @@ import Header from "./components/Header/Header";
 import "./globals.css";
 import { StoreProvider } from "./redux/StoreProvider";
 import Footer from "./components/Footer";
-import { Box } from "@mui/material";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import ThemeRegistry from "./theme/ThemeRegistry";
@@ -22,10 +21,11 @@ export default async function RootLayout({
           <StoreProvider>
             <ThemeRegistry>
               <body>
+                {/* backgroundColor: "#FCF7F8", */}
                 <main
                   style={{
-                    backgroundColor: "#FCF7F8",
                     paddingTop: 10,
+                    backgroundColor: "#FCF7F8",
                     display: "flex",
                     flexDirection: "column",
                     minHeight: "100vh",

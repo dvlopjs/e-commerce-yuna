@@ -4,9 +4,11 @@ import Link from "next/link";
 import "../../components/components.css";
 
 import LogoNegocio from "../../assets/images/yuna_logo.jpg";
-import { useSpring, animated } from "@react-spring/web";
+import { useBreakpoints } from "@/app/utils/useBreakpoints";
 
 export default function LogoApp(): JSX.Element {
+  const { upSm, upMd } = useBreakpoints();
+
   return (
     <>
       <Link href="/" style={{ textDecoration: "none", color: "white" }}>
@@ -22,7 +24,7 @@ export default function LogoApp(): JSX.Element {
         >
           <Image className="logo" src={LogoNegocio} alt="logo" />
 
-          <Typography variant="h4">Yuna pastelería</Typography>
+          {upMd ? <Typography variant="h4">Yuna pastelería</Typography> : null}
         </Box>
       </Link>
     </>

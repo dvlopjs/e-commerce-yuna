@@ -7,16 +7,16 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import DrawerContent from "./DrawerContent";
 import CloseIcon from "@mui/icons-material/Close";
 import { useProductsOnCart } from "@/app/utils/useProductsOnCart";
 
 interface Props {
   open: boolean;
   onClose: () => void;
+  children: React.ReactNode;
 }
 
-const ReusableDrawer: React.FC<Props> = ({ open, onClose }) => {
+const ReusableDrawer: React.FC<Props> = ({ open, onClose, children }) => {
   const { cart } = useProductsOnCart();
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.up("lg"));
@@ -49,7 +49,7 @@ const ReusableDrawer: React.FC<Props> = ({ open, onClose }) => {
           <CloseIcon />
         </IconButton>
       </Box>
-      <DrawerContent />
+      {children}
     </Drawer>
   );
 };

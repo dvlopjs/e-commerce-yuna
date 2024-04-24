@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import CardRegisterLogin from "../CardRegisterLogin";
 
-const LoginPage: React.FC = async () => {
+const LoginPage: React.FC = () => {
   return (
     <>
       <Box pt={5} pb={10}>

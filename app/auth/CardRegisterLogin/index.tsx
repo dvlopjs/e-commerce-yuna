@@ -1,7 +1,6 @@
 "use client";
-import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
 import TextFieldsRegister from "./TextFieldsRegister";
 import TextFieldsLogin from "./TextFieldsLogin";
 
@@ -10,10 +9,6 @@ interface Props {
 }
 
 const CardRegisterLogin: React.FC<Props> = ({ isRegister }) => {
-  const theme = useTheme();
-
-  const isSM = useMediaQuery(theme.breakpoints.up("sm"));
-
   return (
     <Container style={{ textAlign: "center" }}>
       {isRegister ? <TextFieldsRegister /> : <TextFieldsLogin />}

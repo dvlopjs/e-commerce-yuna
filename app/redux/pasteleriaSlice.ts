@@ -10,8 +10,13 @@ export interface Product {
   image: string | StaticImageData;
 }
 
-interface CartProduct extends Product {
+export interface CartProduct {
+  id: number;
+  name: string;
+  price: number;
   quantity: number;
+  addedToCart: boolean;
+  image: string;
 }
 interface PasteleriaState {
   products: Product[];

@@ -1,11 +1,9 @@
-import { Product } from "@/app/redux/pasteleriaSlice";
 import { Box, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
 
 import { priceParser } from "@/app/utils/priceParser";
 import { useProductsOnCart } from "@/app/utils/useProductsOnCart";
 
-export const FooterDrawer: React.FC = () => {
+export const FooterDrawerPedido: React.FC = () => {
   const { subtotal } = useProductsOnCart();
 
   return (
@@ -18,9 +16,13 @@ export const FooterDrawer: React.FC = () => {
         border="1px solid black" // Agregamos un borde negro
         borderRadius={8} // Añadimos bordes redondeados para un aspecto más suave
       >
-        <Typography variant="h5">Subtotal:</Typography>
+        <Typography fontWeight={"bold"} variant="h5">
+          Total:
+        </Typography>
 
-        <Typography variant="h6">${priceParser(subtotal)}</Typography>
+        <Typography fontFamily={"initial"} fontWeight={"bold"} variant="h6">
+          ${priceParser(subtotal)}
+        </Typography>
       </Box>
     </Box>
   );

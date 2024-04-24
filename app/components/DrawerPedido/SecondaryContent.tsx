@@ -16,11 +16,17 @@ export const SecondaryContent: React.FC<Props> = ({ p }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <IconButton onClick={() => dispatch(decreaseQuantityProductOnCart(p.id))}>
+      <IconButton
+        color="primary"
+        onClick={() => dispatch(decreaseQuantityProductOnCart(p.id))}
+      >
         <RemoveIcon />
       </IconButton>
-      {p.quantity}
-      <IconButton onClick={() => dispatch(increaseQuantityProductOnCart(p.id))}>
+      <span style={{ fontFamily: "initial" }}>{p.quantity}</span>
+      <IconButton
+        color="primary"
+        onClick={() => dispatch(increaseQuantityProductOnCart(p.id))}
+      >
         <AddIcon />
       </IconButton>
     </>

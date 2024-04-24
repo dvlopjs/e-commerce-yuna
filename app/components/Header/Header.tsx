@@ -5,17 +5,18 @@ import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import "../components.css";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import ButtonCreateAccount from "../Buttons/ButtonCreateAccount";
 import LogoApp from "./LogoApp";
 import AnimatedBadge from "./AnimatedBadge";
 import ReusableDrawer from "../DrawerPedido";
-import NavButtons from "./NavButtons";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { useServerSession } from "@/app/utils/useServerSession";
+
 import { useSession } from "next-auth/react";
 import { ButtonInSession } from "./ButtonsInSession";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import DrawerMenu from "../DrawerMenu";
+import DrawerContentPedido from "../DrawerPedido/DrawerContent";
 
 interface Props {
   /**
@@ -44,6 +45,7 @@ function ElevationScroll(props: Props) {
 
 export default function ElevateAppBar(props: Props) {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
+  const [openDrawerMenu, setOpenDrawerMenu] = React.useState<boolean>(false);
   const { data: session } = useSession();
 
   console.log(session?.user, "SESSION");
@@ -60,26 +62,23 @@ export default function ElevateAppBar(props: Props) {
           elevation={2}
         >
           <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={() => setOpenDrawerMenu(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+
             <LogoApp />
-            <Box flexGrow={1} />
-            <Box display="flex" alignItems="center">
-              <Box flexGrow={1} /> {/* Espacio en blanco para centrar */}
-              <Box display="flex" gap={4} paddingRight={20}>
-                <NavButtons />
-              </Box>
-              <Box flexGrow={1} /> {/* Espacio en blanco para centrar */}
-            </Box>
+
             <Box flexGrow={1} />
 
             <Box display={"flex"} alignContent={"center"} gap={2}>
-              {!session ? (
-                <ButtonCreateAccount
-                  text="Crear cuenta"
-                  urlDirection="/auth/register"
-                />
-              ) : (
-                <ButtonInSession />
-              )}
+              {!session ? <ButtonCreateAccount /> : <ButtonInSession />}
 
               <AnimatedBadge setOpenDrawer={setOpenDrawer} />
             </Box>
@@ -87,7 +86,15 @@ export default function ElevateAppBar(props: Props) {
         </AppBar>
       </ElevationScroll>
       <Toolbar />
-      <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)} />
+      <DrawerMenu
+        open={openDrawerMenu}
+        onClose={() => setOpenDrawerMenu(false)}
+      />
+      {openDrawer ? (
+        <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+          <DrawerContentPedido />
+        </ReusableDrawer>
+      ) : null}
     </React.Fragment>
   );
 }

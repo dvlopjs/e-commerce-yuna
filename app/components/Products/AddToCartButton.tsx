@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Product, addProductToCart } from "@/app/redux/pasteleriaSlice";
 import { useDispatch } from "react-redux";
 import ReusableDrawer from "../DrawerPedido";
+import DrawerContentPedido from "../DrawerPedido/DrawerContent";
 
 interface Props {
   product: Product;
@@ -37,7 +38,9 @@ const AddToCartButton: React.FC<Props> = ({ product }: Props) => {
       >
         Agregar al carrito
       </Button>
-      <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)} />
+      <ReusableDrawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+        <DrawerContentPedido />
+      </ReusableDrawer>
     </animated.div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
-import { Height } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 
 const Footer: React.FC = () => {
   return (
