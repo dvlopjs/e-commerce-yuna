@@ -32,7 +32,7 @@ const AddToCartButton: React.FC<Props> = ({ product }: Props) => {
     <animated.div style={springProps}>
       <Button
         disabled={clicked}
-        style={{ backgroundColor: "#ffb4a2" }}
+        style={{ color: "white" }}
         variant="contained"
         onClick={handleClick}
       >

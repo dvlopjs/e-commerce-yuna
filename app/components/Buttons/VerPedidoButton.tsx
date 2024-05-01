@@ -45,6 +45,7 @@ export const VerPedidoButton: React.FC = () => {
             "&:hover": {
               backgroundColor: "#E6BAA3", // Cambia el color de fondo del botón al pasar el ratón sobre él
             },
+            fontFamily: "fantasy",
           }}
           endIcon={
             <Badge
@@ -57,7 +58,7 @@ export const VerPedidoButton: React.FC = () => {
             </Badge>
           }
         >
-          Ver pedido
+          VER PEDIDO
         </Button>
       </animated.div>
     </Box>

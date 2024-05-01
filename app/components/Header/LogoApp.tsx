@@ -24,7 +24,11 @@ export default function LogoApp(): JSX.Element {
         >
           <Image className="logo" src={LogoNegocio} alt="logo" />
 
-          {upMd ? <Typography variant="h4">Yuna pastelería</Typography> : null}
+          {upMd ? (
+            <Typography variant="h4" fontFamily={"fantasy"}>
+              Yuna pastelería
+            </Typography>
+          ) : null}
         </Box>
       </Link>
     </>

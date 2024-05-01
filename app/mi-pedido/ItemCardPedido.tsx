@@ -30,9 +30,18 @@ export default function ItemCardPedido({ product }: Props) {
       style={{ display: "flex", justifyContent: "space-between" }}
     >
       <Box sx={{ display: "flex" }}>
-        <Image alt="" src={product.image} width={120} />
+        <Image
+          alt=""
+          src={product.image}
+          style={{ maxWidth: "100%", width: 120, height: 120 }}
+        />
         <CardContent>
-          <Typography component="div" variant="h5">
+          <Typography
+            component="div"
+            variant="h6"
+            fontSize={18}
+            fontFamily={"cursive"}
+          >
             {product.name}
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>

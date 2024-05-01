@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Container>
         <Box pb={2} pt={2}>
-          <Typography variant="h3" align="center">
+          <Typography variant="h4" fontFamily={"cursive"}>
             Nuestros productos...
           </Typography>
         </Box>

@@ -4,12 +4,13 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import { NextAppDirEmotionCacheProvider } from "./EmotionCache";
 
 import { CssBaseline } from "@mui/material";
-import { Cookie } from "next/font/google";
+import { Lora, Montserrat } from "next/font/google";
 
-const dancingScriptCursiva = Cookie({
-  weight: "400",
+const dancingScriptCursiva = Montserrat({
+  weight: "500",
   subsets: ["latin"],
-  variable: "--font-dancing-script-cursiva",
+  // style: "italic",
+  variable: "--font-lora-cursive",
 });
 
 const themeOptions: ThemeOptions = {
@@ -18,7 +19,13 @@ const themeOptions: ThemeOptions = {
   },
   palette: {
     primary: {
-      main: "#8B4513",
+      main: "rgb(255, 180, 162)",
+    },
+    secondary: {
+      main: "#B99470",
+    },
+    success: {
+      main: "#41B06E",
     },
   },
 };

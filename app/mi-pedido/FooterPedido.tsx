@@ -4,8 +4,11 @@ import { Box, Button, Divider, Grid, Typography } from "@mui/material";
 import { priceParser } from "../utils/priceParser";
 import { useProductsOnCart } from "../utils/useProductsOnCart";
 import React from "react";
+import { DialogReusable } from "../components/reusable/DialogReusable";
+import FormEnviarWp from "./FormEnviarWp";
 
 export const FooterPedido: React.FC = () => {
+  const [openModal, setOpenModal] = React.useState<boolean>(false);
   const { subtotal } = useProductsOnCart();
 
   return (
@@ -31,10 +34,18 @@ export const FooterPedido: React.FC = () => {
             <Button
               fullWidth
               variant="contained"
-              style={{ backgroundColor: "rgb(255, 180, 162)" }}
+              style={{ color: "white" }}
+              onClick={() => setOpenModal(true)}
             >
               Confirmar pedido
             </Button>
+            <DialogReusable
+              title="¡El último paso!"
+              open={openModal}
+              onClose={() => setOpenModal(false)}
+            >
+              <FormEnviarWp />
+            </DialogReusable>
           </Grid>
         </Grid>
       ) : null}

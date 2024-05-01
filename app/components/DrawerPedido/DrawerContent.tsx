@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { PrimaryContent } from "./PrimaryContent";
 import { SecondaryContent } from "./SecondaryContent";
 import { FooterDrawerPedido } from "./FooterDrawerPedido";
-import { ScrollBox } from "../ScrollBox";
+import { ScrollBox } from "../reusable/ScrollBox";
 const DrawerContentPedido: React.FC = () => {
   const { cart: products } = useProductsOnCart();
   const dispatch = useDispatch();
@@ -30,25 +30,23 @@ const DrawerContentPedido: React.FC = () => {
     <>
       <Container>
         <List>
-          <ScrollBox maxHeight={"700px"}>
-            <Box pt={2} pb={2}>
-              <Typography variant="h4">Carrito de compras</Typography>
-            </Box>
-            <Box pb={1}>
-              <Divider />
-            </Box>
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              pl={2}
-              pr={2}
-            >
-              <Typography>PRODUCTO</Typography>
-              <Typography>SUBTOTAL</Typography>
-            </Box>
-            <Box pt={1}>
-              <Divider />
-            </Box>
+          {/* <ScrollBox maxHeight={"650px"}> */}
+          <Box pt={2} pb={2}>
+            <Typography fontFamily={"cursive"} variant="h4">
+              Carrito de compras
+            </Typography>
+          </Box>
+          <Box pb={1}>
+            <Divider />
+          </Box>
+          <Box display={"flex"} justifyContent={"space-between"} pl={2} pr={2}>
+            <Typography fontWeight={"bold"}>PRODUCTO</Typography>
+            <Typography fontWeight={"bold"}>SUBTOTAL</Typography>
+          </Box>
+          <Box pt={1}>
+            <Divider />
+          </Box>
+          <ScrollBox maxHeight={"550px"}>
             {products.map((p: Product) => (
               <React.Fragment key={p.id}>
                 <ListItem
@@ -76,6 +74,7 @@ const DrawerContentPedido: React.FC = () => {
               </React.Fragment>
             ))}
           </ScrollBox>
+          {/* </ScrollBox> */}
         </List>
         <FooterDrawerPedido />
       </Container>

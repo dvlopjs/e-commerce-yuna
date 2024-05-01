@@ -65,9 +65,8 @@ export default function ElevateAppBar(props: Props) {
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, color: "white" }}
               onClick={() => setOpenDrawerMenu(true)}
             >
               <MenuIcon />
@@ -78,7 +77,7 @@ export default function ElevateAppBar(props: Props) {
             <Box flexGrow={1} />
 
             <Box display={"flex"} alignContent={"center"} gap={2}>
-              {!session ? <ButtonCreateAccount /> : <ButtonInSession />}
+              {/* {!session ? <ButtonCreateAccount /> : <ButtonInSession />} */}
 
               <AnimatedBadge setOpenDrawer={setOpenDrawer} />
             </Box>

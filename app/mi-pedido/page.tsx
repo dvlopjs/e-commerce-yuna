@@ -3,7 +3,7 @@ import React from "react";
 
 import { CardPedido } from "./CardPedido";
 import { ArrowGoBack } from "../components/Buttons/ArrowGoBack";
-import { ScrollBox } from "../components/ScrollBox";
+import { ScrollBox } from "../components/reusable/ScrollBox";
 import { FooterPedido } from "./FooterPedido";
 import { NoProducts } from "./NoProducts";
 
@@ -16,7 +16,9 @@ export default function MiPedidoPage() {
         alignItems={"center"}
         pb={3}
       >
-        <Typography variant="h3">Mi pedido...</Typography>
+        <Typography fontFamily={"cursive"} variant="h4">
+          Mi pedido...
+        </Typography>
 
         <ArrowGoBack size="large" />
       </Box>

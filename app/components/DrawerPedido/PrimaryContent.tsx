@@ -17,7 +17,9 @@ export const PrimaryContent: React.FC<Props> = ({ p }) => {
         alignContent={"center"}
         pt={4}
       >
-        <Typography variant="h6">{truncateTitle({ text: p.name })}</Typography>
+        <Typography variant="h6" fontFamily={"cursive"}>
+          {truncateTitle({ text: p.name })}
+        </Typography>
         <Typography variant="body1" fontFamily={"initial"}>
           $ {priceParser(p.price * p.quantity)}
         </Typography>

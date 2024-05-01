@@ -51,19 +51,19 @@ export default function DrawerMenu({ open, onClose }: Props) {
       id: 1,
       label: "PRODUCTOS",
       path: "/",
-      icon: <WarehouseIcon color="primary" />,
+      icon: <WarehouseIcon sx={{ color: "white" }} />,
     },
     {
       id: 2,
       label: "MI PEDIDO",
       path: "/mi-pedido",
-      icon: <ProductionQuantityLimitsIcon color="primary" />,
+      icon: <ProductionQuantityLimitsIcon sx={{ color: "white" }} />,
     },
     {
       id: 3,
       label: "CONTACTO",
       path: "/contact",
-      icon: <PersonIcon color="primary" />,
+      icon: <PersonIcon sx={{ color: "white" }} />,
     },
   ];
 

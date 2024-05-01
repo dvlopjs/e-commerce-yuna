@@ -1,11 +1,13 @@
 "use client";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useProductsOnCart } from "../utils/useProductsOnCart";
 import { CartProduct } from "../redux/pasteleriaSlice";
 import ItemCardPedido from "./ItemCardPedido";
-
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { useRouter } from "next/navigation";
 export const CardPedido: React.FC = () => {
   const { cart } = useProductsOnCart();
+  const router = useRouter();
   return (
     <>
       <Grid container justifyContent={"center"} direction={"column"}>
@@ -17,6 +19,24 @@ export const CardPedido: React.FC = () => {
               </Grid>
             </Grid>
           ))}
+
+        {cart.length ? (
+          <Box
+            display={"flex"}
+            justifyContent={"center"}
+            alignContent={"center"}
+            alignItems={"center"}
+            p={2}
+          >
+            <AddCircleOutlineIcon
+              onClick={() => router.push("/")}
+              titleAccess="Agregar más productos"
+              fontSize="large"
+              color="primary"
+              sx={{ cursor: "pointer", fontSize: 40 }}
+            />
+          </Box>
+        ) : null}
       </Grid>
     </>
   );

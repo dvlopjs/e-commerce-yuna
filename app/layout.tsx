@@ -21,6 +21,14 @@ export default async function RootLayout({
           <StoreProvider>
             <ThemeRegistry>
               <body>
+                {/* <head>
+                  <link
+                    rel="icon"
+                    href="/icon?<generated>"
+                    type="image/png"
+                    sizes="32x32"
+                  />
+                </head> */}
                 {/* backgroundColor: "#FCF7F8", */}
                 <main
                   style={{
