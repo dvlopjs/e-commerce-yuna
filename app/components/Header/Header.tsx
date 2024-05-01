@@ -6,13 +6,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import "../components.css";
 import { Box, IconButton } from "@mui/material";
-import ButtonCreateAccount from "../Buttons/ButtonCreateAccount";
 import LogoApp from "./LogoApp";
 import AnimatedBadge from "./AnimatedBadge";
 import ReusableDrawer from "../DrawerPedido";
 
-import { useSession } from "next-auth/react";
-import { ButtonInSession } from "./ButtonsInSession";
+// import { useSession } from "next-auth/react";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import DrawerMenu from "../DrawerMenu";
@@ -46,9 +44,7 @@ function ElevationScroll(props: Props) {
 export default function ElevateAppBar(props: Props) {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
   const [openDrawerMenu, setOpenDrawerMenu] = React.useState<boolean>(false);
-  const { data: session } = useSession();
-
-  console.log(session?.user, "SESSION");
+  // const { data: session } = useSession();
 
   return (
     <React.Fragment>
