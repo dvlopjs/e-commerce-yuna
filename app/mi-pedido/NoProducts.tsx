@@ -1,7 +1,6 @@
 "use client";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Box, Button, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
 import { useProductsOnCart } from "../utils/useProductsOnCart";
 
 export const NoProducts: React.FC = () => {
