@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 // import { authOptions } from "./api/auth/[...nextauth]/route";
 import ThemeRegistry from "./theme/ThemeRegistry";
 import SessionProvider from "./components/SessionProvider";
+import Template from "./template";
 
 export default async function RootLayout({
   children,
@@ -32,8 +33,7 @@ export default async function RootLayout({
               >
                 <Header />
 
-                {children}
-
+                <Template>{children}</Template>
                 <Footer />
               </main>
             </body>
